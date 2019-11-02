@@ -5,6 +5,7 @@ Por enquanto estou apenas desenhando as características e telas.
 
 ## Guia
 
-* [Perfil](./desenho/perfil#perfil)
-* [Criação do personagem](./desenho/criacao-do-personagem#criação-de-personagens)
+* [APP](./desenho/app#app)
+* [Jogador](./desenho/jogador#jogador)
+* [Personagem](./desenho/personagem#personagem)
 
