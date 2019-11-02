@@ -1,13 +1,14 @@
 # Criação de personagens
 
-**Características**
+[Clique aqui para voltar](../../)
+
+## Características
 
 > O criador do RPG deve escolher as características `obrigatórias` , mas cada jogador pode definir as características que quiser, considerando as opções abaixo:
 
 * Nome completo ( `string` )
 * Data de nascimento ( `date` )
-  + Acompanha o campo idade ( `number` )
-  + *`Calcula idade automaticamente em outro campo`*
+  + Acompanha o campo idade ( `number` , `calculada automaticamente` )
 * Fotos do personagem ( `files` )
 * História ( `string` )
 
