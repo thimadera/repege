@@ -1,6 +1,6 @@
 # Perfil
 
-[Clique aqui para voltar](../../)
+[Clique aqui para voltar](https://github.com/oshThiago/repege)
 
 ## Características
 
@@ -8,7 +8,7 @@
 |--------------------|:----------:|-------------|
 | Nome               | `string` |             |
 | Data de nascimento | `date` 	|             |
-Categoria|[Categoria](#Categorias)
+Categoria|[Categoria](#Categorias dos jogadores)
 
 ### Categorias dos jogadores
 

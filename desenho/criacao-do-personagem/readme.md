@@ -1,6 +1,6 @@
 # Criação de personagens
 
-[Clique aqui para voltar](../../)
+[Clique aqui para voltar](https://github.com/oshThiago/repege)
 
 ## Características
 
