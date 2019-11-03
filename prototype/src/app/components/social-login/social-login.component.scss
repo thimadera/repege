@@ -1,0 +1,42 @@
+.social-login {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 50px;
+    left: 0;
+    .social-text {
+        margin-top: 50px;
+        color: #fff;
+        font-size: 15px;
+    }
+    .buttons-social {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-top: 10px;
+    }
+    .custom-social-button {
+        cursor: pointer;
+        width: 35px;
+        border-radius: 50%;
+        height: 35px;
+        display: flex;
+        * {
+            margin: auto;
+        }
+    }
+    .google {
+        justify-self: end;
+        margin-right: 5px;
+        background-color: #DB4437;
+        * {
+            width: 25px!important;
+        }
+    }
+    .facebook {
+        margin-left: 5px;
+        background-color: #4267B2;
+        * {
+            width: 20px!important;
+        }
+    }
+}

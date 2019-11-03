@@ -5,6 +5,7 @@
 ## Características
 
 - Nível do RPG
+- Faixa etária
 - Complexidade
 - Tema
 - Tags
@@ -37,3 +38,6 @@
 - Regras
 - Quantidade de personagens
 - Conhecimento básico de cada personagem
+- Definir se os personagens vão poder criar eventos
+
+** Os eventos serão enviados convites e as pessoas aceitarão ou não

@@ -8,4 +8,5 @@ Por enquanto estou apenas desenhando as características e telas.
 * [APP](./desenho/app#app)
 * [Jogador](./desenho/jogador#jogador)
 * [Personagem](./desenho/personagem#personagem)
+* [RPG](./desenho/rpg#rpg)
 
