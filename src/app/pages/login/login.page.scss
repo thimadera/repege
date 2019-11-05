@@ -1,0 +1,19 @@
+ion-content {
+    --background: url("/assets/img/background-onboarding.png") center / cover;
+}
+
+.custom-button {
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.buttons-login {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: grid;
+}
+
+.email {
+    align-self: end;
+}
