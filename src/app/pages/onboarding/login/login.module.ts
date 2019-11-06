@@ -5,13 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { OnboardingPage } from './onboarding.page';
+import { LoginPage } from './login.page';
 import { SocialLoginModule } from 'src/app/components/social-login/social-login.module';
+import { BrMaskerModule } from 'br-mask';
 
 const routes: Routes = [
   {
     path: '',
-    component: OnboardingPage
+    component: LoginPage
   }
 ];
 
@@ -21,8 +22,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    BrMaskerModule
   ],
-  declarations: [OnboardingPage]
+  declarations: [LoginPage]
 })
-export class OnboardingPageModule {}
+export class LoginPageModule { }

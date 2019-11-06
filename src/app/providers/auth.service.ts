@@ -72,6 +72,28 @@ export class AuthService {
     });
   }
 
+  logInWithPhone() {
+
+  }
+
+  sendSignInLinkToEmail(email: string) {
+    auth.sendSignInLinkToEmail(email, {
+      url: `http://localhost:8100/login?finalizeLogin=${email}`,
+      handleCodeInApp: true
+    })
+    // TODO : Tratar recebimento de informação do firebase e informar o usuário para acessar o email
+  }
+
+  signInWithEmailLink(email: string) {
+    auth.signInWithEmailLink(email).then(result => {
+      console.log(result);
+      result.user.uid;
+    }).catch(error => {
+      console.log(error)
+    })
+    // TODO : Tratar recebimento de informação do firebase, entrar no app e informar mensagens de possíveis erros
+  }
+
 
   mergeUser(provider: firebase.auth.AuthProvider): Promise<firebase.User> {
     return new Promise(resolve => {

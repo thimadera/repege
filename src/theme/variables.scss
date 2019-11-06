@@ -75,3 +75,26 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+
+h1 {
+    font-size: 1.4em!important;
+}
+
+.welcome {
+    position: absolute;
+    top: 120px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    left: 0;
+}
+
+.custom-button {
+    border-radius: 25px;
+    padding: 11px 15px;
+    margin: 0 auto;
+    margin-top: 10px;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
