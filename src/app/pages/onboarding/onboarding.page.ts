@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
-import { Router } from '@angular/router';
-
-import { AuthService } from '../../providers/auth.service';
+import { environment } from '../../../environments/environment';
+import { ModalController, IonSlides, NavParams, Platform, LoadingController } from '@ionic/angular';
+import { RegisterComponent } from '../../components/register/register.component';
+import { LoginComponent } from '../../components/login/login.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-onboarding',
@@ -11,46 +14,91 @@ import { AuthService } from '../../providers/auth.service';
 })
 export class OnboardingPage implements OnInit {
 
-  @ViewChild('slides', { static: true }) slides: IonSlides;
-
-  // TODO: Return welcome page if has done onboarding
-
-  isBeginning = true;
-  isEnd = false;
+  @ViewChild('slides', { static: false }) slides: IonSlides
 
   constructor(
+    private fire: AngularFireAuth,
+    private modal: ModalController,
+    private platform: Platform,
+    private auth: AuthService,
     private router: Router,
-    private auth: AuthService
-  ) { }
-
-  changeSlide() {
-    this.slides.isEnd().then(isEnd => {
-      this.isEnd = isEnd;
-    });
-    this.slides.isBeginning().then(isBeginning => {
-      this.isBeginning = isBeginning;
-    });
-  };
-
-  ngOnInit() { }
-
-  goto(page: string) {
-    console.log("TODO: goto page ", page);
-    this.router.navigate([page]);
+    private loadingController: LoadingController
+  ) {
+    this.canLoad();
+    let emailFinalize = this.platform.getQueryParam('finalizeLogin');
+    if (emailFinalize) {
+      this.presentLoading();
+      this.auth.signInWithEmailLink(emailFinalize).then(response => {
+        this.router.navigate(['home']);
+        this.dismissLoading();
+      });
+    }
   }
 
-  loginWithFacebook() {
-    this.auth.loginWithFacebook().then(user => {
-      if (user)
-        console.log(user.uid);
+  slideOpts = {
+    autoHeight: true,
+    loop: true,
+    autoplay: true
+  };
+
+  appName = environment.app_name;
+
+  toLoad = false;
+  loading: HTMLIonLoadingElement;
+
+  canLoad() {
+    return new Promise(resolve => {
+      this.fire.auth.onAuthStateChanged(user => {
+        if (user)
+          this.router.navigate(['home']);
+      });
     });
   };
 
-  loginWithGoogle() {
-    this.auth.loginWithGoogle().then(user => {
-      if (user)
-        console.log(user.uid);
+  async presentLoading() {
+    this.toLoad = true;
+    this.loading = await this.loadingController.create({
+      message: 'Aguarde',
+      spinner: 'crescent'
     });
-  };
+    if (this.toLoad)
+      await this.loading.present();
+  }
+
+  dismissLoading() {
+    if (this.loading) {
+      this.loading.dismiss();
+    } else this.toLoad = false;
+  }
+
+  ngOnInit() {
+    // this.presentLogin();
+  }
+
+  ionViewDidEnter() {
+    this.slides.updateAutoHeight();
+  }
+
+  async presentRegister() {
+    const modal = await this.modal.create({
+      component: RegisterComponent,
+      mode: 'ios'
+    });
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+    if (data && data.todo == "presentLogin")
+      this.presentLogin();
+  }
+
+  async presentLogin() {
+    const modal = await this.modal.create({
+      component: LoginComponent,
+      mode: 'ios'
+    });
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+    if (data && data.todo == "presentRegister")
+      this.presentRegister();
+  }
 
 }

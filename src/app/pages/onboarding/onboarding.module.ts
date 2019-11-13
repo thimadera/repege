@@ -6,7 +6,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { OnboardingPage } from './onboarding.page';
-import { SocialLoginModule } from 'src/app/components/social-login/social-login.module';
 
 const routes: Routes = [
   {
@@ -17,7 +16,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    SocialLoginModule,
     CommonModule,
     FormsModule,
     IonicModule,
@@ -25,4 +23,4 @@ const routes: Routes = [
   ],
   declarations: [OnboardingPage]
 })
-export class OnboardingPageModule {}
+export class OnboardingPageModule { }

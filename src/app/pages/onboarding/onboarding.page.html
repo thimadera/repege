@@ -1,42 +1,46 @@
-<ion-content>
-    <ion-slides #slides (ionSlideWillChange)="changeSlide()" pager="true">
-        <ion-slide>
-            <h1>Introdução sobre o APP</h1>
-        </ion-slide>
-        <ion-slide>
-            <h1>Falando sobre jogar</h1>
-        </ion-slide>
-        <ion-slide>
-            <h1>Falando sobre criar RPGs</h1>
-        </ion-slide>
-        <ion-slide>
-            <div>
-                <div class="welcome">
-                    <h1>Tela de boas vindas</h1>
-                </div>
-                <div class="buttons-init">
-                    <div class="custom-button login" (click)="goto('login')">
-                        Já sou usuário
-                    </div>
-                    <div class="custom-button register" (click)="goto('register')">
-                        Quero me registrar
+<div class="container">
+    <div class="content">
+        <ion-slides #slides pager="true" [options]="slideOpts">
+            <ion-slide class="slide">
+                <div class="slide-content">
+                    <img src="./assets/test/test-image-1.svg" />
+                    <div class="title">Bem vindo ao {{ appName.toUpperCase() }}!</div>
+                    <div class="subtitle">
+                        Descubra um mundo novo de aventuras e muitas emoções.
                     </div>
                 </div>
-                <social-login></social-login>
-            </div>
-        </ion-slide>
-    </ion-slides>
-</ion-content>
-
-<ion-footer no-border>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-button (click)="slides.slidePrev()" [hidden]="isBeginning">Voltar
-            </ion-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
-            <ion-button (click)="slides.slideNext()" [hidden]="isEnd">Próximo
-            </ion-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-footer>
+            </ion-slide>
+            <ion-slide>
+                <div class="slide-content">
+                    <img src="./assets/test/test-image-2.svg" />
+                    <div class="title">
+                        Histórias magníficas.
+                    </div>
+                    <div class="subtitle">
+                        Todo dia acontece uma nova aventura no mundo dos RPGs. Aqui você pode fazer criar a sua própria.
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="slide-content">
+                    <img src="./assets/test/test-image-3.svg" />
+                    <div class="title">
+                        Criatividade sem limites.
+                    </div>
+                    <div class="subtitle">
+                        Tem uma nova ideia? Crie seu próprio RPG. Sempre há uma nova história que pode ser contada.
+                    </div>
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </div>
+</div>
+<div class="footer">
+    <div class="custom-button" (click)="presentRegister()">
+        ME AVENTURAR
+    </div>
+    <div class="divider"></div>
+    <div class="custom-button" (click)="presentLogin()">
+        FAZER LOGIN
+    </div>
+</div>

@@ -1,5 +1,7 @@
 {
   "name": "repege",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

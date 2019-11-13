@@ -7,9 +7,17 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
+
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BrMaskerModule } from 'br-mask';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { IonicStorageModule } from '@ionic/storage';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyD3-tDTYh-OzoXpVa9i00IaV5RKddgVtl8",
@@ -22,18 +30,23 @@ export const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, RegisterComponent, LoginComponent],
+  entryComponents: [RegisterComponent, LoginComponent],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
+    BrowserModule,
+    IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule,
+    BrMaskerModule,
+    IonicStorageModule,
+    IonicStorageModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

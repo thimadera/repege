@@ -5,26 +5,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPage } from './login.page';
-import { SocialLoginModule } from 'src/app/components/social-login/social-login.module';
-import { BrMaskerModule } from 'br-mask';
+import { HomePage } from './home.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginPage
+    component: HomePage
   }
 ];
 
 @NgModule({
   imports: [
-    SocialLoginModule,
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    BrMaskerModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [LoginPage]
+  declarations: [HomePage]
 })
-export class LoginPageModule { }
+export class HomePageModule {}
