@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 import * as firebase from 'firebase/app';
+import { IUser } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class ManageUserService {
     return words.join(" ");
   }
 
-  updateUser(newData: any): Promise<any> {
+  updateUser(newData: IUser): Promise<any> {
 
     return new Promise(resolve => {
 
@@ -31,9 +32,9 @@ export class ManageUserService {
         newData.name = this.sanitizeName(newData.name);
 
       // Getting old data from storage
-      this.storage.get("userData").then(oldData => {
+      this.storage.get("userData").then((oldData: IUser) => {
 
-        let data: any = {};
+        let data: IUser = {};
 
         if (oldData != null) {
 
@@ -49,6 +50,7 @@ export class ManageUserService {
 
         // Merging new infos
         Object.keys(newData).forEach(key => {
+
           data[key] = newData[key];
           if (oldData)
             if (!data[key] && !oldData[key])
@@ -64,6 +66,7 @@ export class ManageUserService {
 
         // Saving data to Firebase
         if (data && oldData) {
+
           if (data.name && data.name != oldData.name)
             try {
               firebase.auth().currentUser.updateProfile({
@@ -86,19 +89,27 @@ export class ManageUserService {
 
 
   get(): Promise<any> {
+
     return new Promise(resolve => {
+
       this.storage.get('userData').then(user => {
         resolve(user);
+
       });
     });
   };
 
   delete(): Promise<boolean> {
+
     return new Promise(resolve => {
+
       this.storage.remove('userData').then(user => {
         resolve(true);
+
       }).catch(_error => {
+
         throw new Error("Error trying to delete user infos");
+
       });
     });
   };

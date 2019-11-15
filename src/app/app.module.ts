@@ -9,9 +9,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrMaskerModule } from 'br-mask';
@@ -30,8 +27,7 @@ export const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent],
-  entryComponents: [RegisterComponent, LoginComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

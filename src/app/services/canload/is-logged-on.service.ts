@@ -5,7 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 @Injectable({
   providedIn: 'root'
 })
-export class isLogged implements CanLoad {
+export class isLoggedOn implements CanLoad {
 
   constructor(
     private fire: AngularFireAuth,

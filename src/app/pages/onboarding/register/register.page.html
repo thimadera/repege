@@ -1,0 +1,51 @@
+<ion-header no-border>
+    <div class="close-modal custom-button" routerLink="/onboarding" routerDirection="forward">Cancelar</div>
+    <div class="logo-top">REPEGE</div>
+</ion-header>
+
+
+<ion-content fullscreen>
+    <!-- <div class="container"> -->
+    <!-- <div class="content"> -->
+    <ion-slides #slides [options]="slideOpts">
+        <ion-slide>
+            <div class="center">
+                <div class="container">
+                    <div class="title">
+                        Qual o seu nome?
+                    </div>
+                    <div class="custom-input">
+                        <ion-input placeholder="Digite aqui" [(ngModel)]="name" name="full_name" type="text">
+                        </ion-input>
+                    </div>
+                    <button [disabled]="!simulationInfos?.name" class="custom-buttom ion-activatable" (click)="slideNext()">
+                        Próximo<ion-ripple-effect></ion-ripple-effect>
+                    </button>
+                </div>
+            </div>
+        </ion-slide>
+    </ion-slides>
+
+
+
+    <!-- <img src="./assets/test/test-image-4.svg" />
+            <div class="title">
+                Iniciar a aventura!
+            </div>
+            <div class="subtitle">
+                Vamos começar nos conhecendo melhor
+            </div>
+             <div [class.hidden]="!(step==1)" class="subtitle">
+              Quando você nasceu?
+          </div> 
+            <ion-input [class.hidden]="!(step==0)" class="name-input custom-input" [(ngModel)]="user.name" name="name" type="text" autofocus autocorrect="on" autocomplete="on" autocapitalize="on" required placeholder="Digite seu nome"></ion-input>
+            <ion-datetime [class.hidden]="!(step==1)" class="custom-input" [(ngModel)]="ionDateBirth" name="birthDate" [max]="ionDateNow" cancel-text="Cancelar" doneText="Salvar" displayFormat="DD/MM/YYYY" placeholder="Quando você nasceu?">
+            </ion-datetime>
+            <button class="ion-activatable" (click)="next()" [disabled]="!user.name"> Continuar
+                <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+            </button>
+            <div class="login-register custom-button" routerLink="/login" routerDirection="forward">Já tenho uma conta
+            </div> -->
+    <!-- </div>
+    </div> -->
+</ion-content>

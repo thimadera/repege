@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginPage implements OnInit {
   @ViewChild('inputs', { static: false }) inputs: ElementRef
 
   constructor(
@@ -61,7 +61,6 @@ export class LoginComponent implements OnInit {
       this.logged();
     }).catch(_ => {
       this.error();
-      this.dismissLoading();
     });
   };
 
@@ -71,7 +70,6 @@ export class LoginComponent implements OnInit {
       this.logged();
     }).catch(() => {
       this.error();
-      this.dismissLoading();
     });
   };
 
@@ -105,6 +103,7 @@ export class LoginComponent implements OnInit {
     this.auth.sendSignInLinkToEmail(this.email).then(_ => {
       this.linkEnviado();
     }).catch(error => {
+      this.error();
     })
   }
 
@@ -174,15 +173,25 @@ export class LoginComponent implements OnInit {
       await this.loading.present();
   }
 
-  dismissLoading() {
+  async dismissLoading(safe?) {
     if (this.loading) {
       this.loading.dismiss();
-    } else this.toLoad = false;
+    } else
+      this.toLoad = false;
+    if (!safe) {
+      await new Promise(resolve => {
+        setTimeout(_ => {
+          resolve();
+        }, 10)
+      });
+      this.dismissLoading(true);
+    }
   }
 
   async error() {
+    this.dismissLoading();
     let alertError = await this.alertController.create({
-      header: 'Houston we have a problem!',
+      header: 'Houston, we have a problem!',
       subHeader: 'Parece que tivemos um problema para tentar fazer login, tente novamente.',
       buttons: ['OK'],
       mode: "ios"
@@ -202,4 +211,5 @@ export class LoginComponent implements OnInit {
     this.dismissLoading();
     return await message.present();
   }
+
 }

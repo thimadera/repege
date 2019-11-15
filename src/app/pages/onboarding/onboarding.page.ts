@@ -1,9 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { ModalController, IonSlides, NavParams, Platform, LoadingController } from '@ionic/angular';
-import { RegisterComponent } from '../../components/register/register.component';
-import { LoginComponent } from '../../components/login/login.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ModalController, Platform, LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -14,7 +12,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class OnboardingPage implements OnInit {
 
-  @ViewChild('slides', { static: false }) slides: IonSlides
+  // @ViewChild('slides', { static: false }) slides: IonSlides
 
   constructor(
     private fire: AngularFireAuth,
@@ -36,9 +34,12 @@ export class OnboardingPage implements OnInit {
   }
 
   slideOpts = {
-    autoHeight: true,
+    // autoHeight: true,
     loop: true,
-    autoplay: true
+    simulateTouch: true,
+    autoplay: {
+      delay: 10000
+    }
   };
 
   appName = environment.app_name;
@@ -76,29 +77,7 @@ export class OnboardingPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.slides.updateAutoHeight();
-  }
-
-  async presentRegister() {
-    const modal = await this.modal.create({
-      component: RegisterComponent,
-      mode: 'ios'
-    });
-    await modal.present();
-    const { data } = await modal.onWillDismiss();
-    if (data && data.todo == "presentLogin")
-      this.presentLogin();
-  }
-
-  async presentLogin() {
-    const modal = await this.modal.create({
-      component: LoginComponent,
-      mode: 'ios'
-    });
-    await modal.present();
-    const { data } = await modal.onWillDismiss();
-    if (data && data.todo == "presentRegister")
-      this.presentRegister();
+    // this.slides.updateAutoHeight();
   }
 
 }

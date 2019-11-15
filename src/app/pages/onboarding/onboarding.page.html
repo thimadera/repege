@@ -1,46 +1,48 @@
-<div class="container">
-    <div class="content">
-        <ion-slides #slides pager="true" [options]="slideOpts">
-            <ion-slide class="slide">
-                <div class="slide-content">
-                    <img src="./assets/test/test-image-1.svg" />
-                    <div class="title">Bem vindo ao {{ appName.toUpperCase() }}!</div>
-                    <div class="subtitle">
-                        Descubra um mundo novo de aventuras e muitas emoções.
+<ion-content fullscreen>
+    <div class="container">
+        <div class="content">
+            <ion-slides #slides pager="true" [options]="slideOpts">
+                <ion-slide>
+                    <div class="slide-content">
+                        <img src="./assets/unDraw/undraw_running_wild_ni0y.svg" />
+                        <div class="title">Bem vindo ao {{ appName.toUpperCase() }}.</div>
+                        <div class="subtitle">
+                            Descubra um universo de emoções e aventuras, onde você pode ser quem você quiser!
+                        </div>
                     </div>
-                </div>
-            </ion-slide>
-            <ion-slide>
-                <div class="slide-content">
-                    <img src="./assets/test/test-image-2.svg" />
-                    <div class="title">
-                        Histórias magníficas.
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-content">
+                        <img src="./assets/unDraw/undraw_book_lover_mkck.svg" />
+                        <div class="title">
+                            Um mundo de histórias.
+                        </div>
+                        <div class="subtitle">
+                            Todos os dias centenas de histórias acontecem. Você escolhe se entra em uma ou mergulha no seu próprio mundo.
+                        </div>
                     </div>
-                    <div class="subtitle">
-                        Todo dia acontece uma nova aventura no mundo dos RPGs. Aqui você pode fazer criar a sua própria.
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-content">
+                        <img src="./assets/unDraw/undraw_friends_online_klj6.svg" />
+                        <div class="title">
+                            Jogue do seu jeito.
+                        </div>
+                        <div class="subtitle">
+                            No {{ appName.toUpperCase() }} você atua em histórias já criadas pelos outros usuários ou cria a sua e compartilha com os amigos. Entre e escolha!
+                        </div>
                     </div>
-                </div>
-            </ion-slide>
-            <ion-slide>
-                <div class="slide-content">
-                    <img src="./assets/test/test-image-3.svg" />
-                    <div class="title">
-                        Criatividade sem limites.
-                    </div>
-                    <div class="subtitle">
-                        Tem uma nova ideia? Crie seu próprio RPG. Sempre há uma nova história que pode ser contada.
-                    </div>
-                </div>
-            </ion-slide>
-        </ion-slides>
+                </ion-slide>
+            </ion-slides>
+        </div>
     </div>
-</div>
-<div class="footer">
-    <div class="custom-button" (click)="presentRegister()">
-        ME AVENTURAR
+    <div class="footer">
+        <div class="custom-button" routerLink="/register" routerDirection="forward">
+            ME AVENTURAR
+        </div>
+        <div class="divider"></div>
+        <div class="custom-button" routerLink="/login" routerDirection="forward">
+            FAZER LOGIN
+        </div>
     </div>
-    <div class="divider"></div>
-    <div class="custom-button" (click)="presentLogin()">
-        FAZER LOGIN
-    </div>
-</div>
+</ion-content>

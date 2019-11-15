@@ -1,0 +1,108 @@
+<ion-content fullscreen>
+    <div class="container">
+
+        <div class="close-modal custom-button" routerLink="/onboarding" routerDirection="forward">
+            Cancelar
+        </div>
+
+        <div class="content">
+
+            <div>
+                <img src="./assets/test/test-image-5.svg" />
+            </div>
+
+            <div>
+                <div class="title">
+                    Bem vindo de volta!
+                </div>
+
+                <div class="subtitle">
+                    Escolha uma forma de login
+                </div>
+            </div>
+
+            <div class="phone-email-container">
+
+                <div class="custom-button chip" (click)="turnphoneinput()">Código por SMS
+                    <img class="arrow" [class.turn]="show_phone" src="/assets/icons/arrow.svg">
+                </div>
+
+                <div class="expandable" [class.hidden]="!show_phone">
+
+                    <ion-input (ionChange)="phoneChange()" [class.invalid]="(submitted && !phoneValid)" [(ngModel)]="phone" debounce=10 name="phone" class="input" type="text" placeholder="Digite seu telefone" autocomplete="on" autocorrect="on" inputmode="tel" spellcheck
+                        type="tel" [brmasker]="{phone: true,len:14}" placeholder="Insira seu telefone">
+                    </ion-input>
+
+                    <button class="ion-activatable" (click)="loginWithPhone()">
+                        Validar
+                        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+                    </button>
+
+                </div>
+
+                <div class="custom-button chip" (click)="turnemailinput()">Link pelo e-mail
+                    <img class="arrow" [class.turn]="show_email" src="/assets/icons/arrow.svg">
+                </div>
+
+                <div class="expandable" [class.hidden]="!show_email">
+
+                    <ion-input [class.invalid]="false" [(ngModel)]="email" debounce=10 name="email" class="input" type="text" placeholder="Ou o seu e-mail" autocomplete="on" autocorrect="on" inputmode="email" spellcheck type="email" placeholder="Insira seu e-mail">
+                    </ion-input>
+
+                    <button class="ion-activatable" (click)="loginWithEmail()">
+                        Enviar link
+                        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="buttons-social">
+
+                <div class="custom-social-button google" (click)="loginWithGoogle()">
+                    <img src="/assets/icons/google.svg">
+                </div>
+
+                <div class="custom-social-button facebook" (click)="loginWithFacebook()">
+                    <img src="/assets/icons/facebook.svg">
+                </div>
+
+            </div>
+
+            <div class="login-register custom-button" routerLink="/register" routerDirection="forward">
+                Ou clique aqui para se cadastrar
+            </div>
+
+        </div>
+    </div>
+
+    <div class="full recaptcha" [class.hidden]="!showRecaptcha">
+        <div class="full-container recaptcha">
+            <div class="title">
+                Valide o recaptcha abaixo antes de prosseguir:
+            </div>
+            <div id="recaptcha"></div>
+            <button class="ion-activatable" (click)="closeRecaptcha()">
+                Confirmar
+                <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+            </button>
+        </div>
+    </div>
+
+    <div class="full validate-phone" [class.hidden]="!showVerificationPhone">
+        <div class="full-container validate-phone">
+            <div class="title">
+                Digite o código que você recebeu pelo SMS
+            </div>
+            <div>
+                <ion-input (ionChange)="codeChange($event)" maxlength="6" placeholder="••••••" inputmode="numeric">
+                </ion-input>
+            </div>
+            <button class="ion-activatable " (click)="closeVerificationPhone() ">
+                Voltar
+                <ion-ripple-effect type="unbounded "></ion-ripple-effect>
+            </button>
+        </div>
+    </div>
+</ion-content>
